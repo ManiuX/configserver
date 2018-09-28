@@ -2,13 +2,13 @@ server:
   port: 8080
   context-path: /api
 
-userService:
-  ribbon:
-    listOfServers: http://localhost:8082, http://localhost:8001
+# userService:
+#   ribbon:
+#     listOfServers: http://localhost:8082, http://localhost:8001
 
-todoService:
-  ribbon:
-    listOfServers: http://localhost:8088, http://localhost:8002
+# todoService:
+#   ribbon:
+#     listOfServers: http://localhost:8088, http://localhost:8002
 
 zuul:
   routes:
@@ -22,4 +22,8 @@ zuul:
       serviceId: todoService
       path: /todos/**
       stripPrefix: false
-  
+spring:
+  cloud:
+    consul:
+      discovery:
+        health-check-path: /api/health
